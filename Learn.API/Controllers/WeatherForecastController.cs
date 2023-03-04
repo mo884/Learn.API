@@ -19,7 +19,7 @@ namespace Learn.API.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<WeatherForecast> Get( int id)
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -28,6 +28,11 @@ namespace Learn.API.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpPost]
+        public IActionResult Create(WeatherForecast weather)
+        {
+            return Ok();
         }
     }
 }
